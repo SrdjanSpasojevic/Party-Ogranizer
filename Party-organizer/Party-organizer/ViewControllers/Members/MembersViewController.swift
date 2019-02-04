@@ -110,7 +110,7 @@ class MembersViewController: BaseViewController
             let profileVC = segue.destination as? ProfileViewController
         {
             weak var _self = self
-            //profileVC.profile = _self?.dataSource[(_self?.selectedProfileIndex)!]
+            profileVC.profile = _self?.dataSource[(_self?.selectedProfileIndex)!]
         }
     }
     
