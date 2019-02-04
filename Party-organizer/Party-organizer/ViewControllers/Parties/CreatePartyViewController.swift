@@ -57,7 +57,7 @@ class CreatePartyViewController: BaseViewController
                 self.backgroundView.alpha = 0.6
             }
             
-            UIView.animate(withDuration: 0.2, delay: 0.3, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 1.4, delay: 0.3, options: .curveEaseIn, animations: {
                 self.datePickerHolderBottom.constant = 0.0
             }, completion: nil)
         }
@@ -78,7 +78,7 @@ class CreatePartyViewController: BaseViewController
                 self.backgroundView.alpha = 0.0
             }
             
-            UIView.animate(withDuration: 0.2, delay: 0.3, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 1.4, delay: 0.3, options: .curveEaseOut, animations: {
                 self.datePickerHolderBottom.constant = (self.datePickerHolder.frame.size.height + 100.0)
             }, completion: nil)
         }
