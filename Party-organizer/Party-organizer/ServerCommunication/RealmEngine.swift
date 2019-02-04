@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftyJSON
 
 class RealmEngine: NSObject
 {
@@ -39,12 +40,13 @@ class RealmEngine: NSObject
         }
     }
     
-    func update<T: Object>(_ object: T, with dictionary: [String: Any?]) {
+    func update(_ object: Party, with dictionary: [String: Any?]) {
         do {
             try realm.write {
-                for (key, value) in dictionary {
-                    object.setValue(value, forKey: key)
-                }
+                object.name = dictionary["name"] as? String
+                object.partyDescription = dictionary["partyDescription"] as? String
+                object.date = dictionary["date"] as? Date
+                object.members = (dictionary["members"] as? List<String>)!
             }
         } catch {
             post(error)

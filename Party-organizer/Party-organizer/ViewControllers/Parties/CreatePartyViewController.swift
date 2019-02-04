@@ -60,7 +60,7 @@ class CreatePartyViewController: BaseViewController
             
             self.members = self.party.members
             
-            self.newMembersAdded(resetData: true)
+            self.newMembersAdded()
         }
     }
     
@@ -68,6 +68,10 @@ class CreatePartyViewController: BaseViewController
     {
         super.loadData()
         
+        if self.dataSource.count == 0
+        {
+             self.dataSource.append("Members (\(self.dataSource.count))")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Party-organizer/Models/Party.swift"
-            timestampString = "571012158.882571"
+            filePath = "Party-organizer/ServerCommunication/RealmEngine.swift"
+            timestampString = "571013413.837734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "toDict()"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "update(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
