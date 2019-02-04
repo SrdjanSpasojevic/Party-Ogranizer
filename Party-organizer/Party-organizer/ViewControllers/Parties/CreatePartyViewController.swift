@@ -24,7 +24,7 @@ class CreatePartyViewController: BaseViewController
     @IBOutlet weak var tableView: UITableView!
     
     var party: Party!
-    var members: List<Int>!
+    var members: List<Int> = List()
     
     var dataSource: [String] = []
     
@@ -54,6 +54,16 @@ class CreatePartyViewController: BaseViewController
         self.dataSource.append("Members (\(self.dataSource.count))")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "partyToMembers",
+            let membersVC = segue.destination as? MembersViewController
+        {
+            membersVC.setDisplayType(to: .selectMemebers)
+            membersVC.members = self.members
+        }
+    }
+    
     @IBAction func openDatePickerAction(_ sender: UITapGestureRecognizer)
     {
         //TODO: Open DatePicker
@@ -68,6 +78,37 @@ class CreatePartyViewController: BaseViewController
     @IBAction func doneAction(_ sender: UIButton)
     {
         self.hideDatePicker(animated: true)
+    }
+    
+    //MARK: Public methods
+    func newMembersAdded()
+    {
+        let realm = RealmEngine.shared.realm
+        var counter = 0
+        
+        self.dataSource.removeAll()
+        self.dataSource.append("Members (\(self.dataSource.count-1))")
+        
+        for profileObject in realm.objects(Profile.self)
+        {
+            if self.members.contains(profileObject.id.intValue)
+            {
+                self.dataSource.append(profileObject.username)
+                counter += 1
+            }
+        }
+        
+        //+1 because we have "Members (count)" object allways in array
+        if counter + 1 == self.dataSource.count
+        {
+            self.refreshMembers()
+        }
+    }
+    
+    func refreshMembers()
+    {
+        self.dataSource[0] = "Members (\(self.dataSource.count-1))"
+        self.tableView.reloadData()
     }
     
     //MARK: Private methods
@@ -134,6 +175,10 @@ class CreatePartyViewController: BaseViewController
         
         RealmEngine.shared.add(party)
     }
+    
+    deinit {
+        print("Deinit called on CreatePartyVC")
+    }
 }
 
 extension CreatePartyViewController: UITableViewDataSource
@@ -147,18 +192,16 @@ extension CreatePartyViewController: UITableViewDataSource
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
         
-        let memberData = self.dataSource[indexPath.row]
-        
         if indexPath.row == 0
         {
             cell.accessoryType = .disclosureIndicator
         }
         else
         {
-            cell.backgroundColor = .lightGray
+            cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
         }
         
-        cell.textLabel?.text = memberData
+         cell.textLabel?.text = self.dataSource[indexPath.row]
         
         return cell
     }
@@ -181,6 +224,14 @@ extension CreatePartyViewController: UITableViewDelegate
         if indexPath.row != 0
         {
             self.members.remove(at: indexPath.row)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        if indexPath.row == 0
+        {
+            self.performSegue(withIdentifier: "partyToMembers", sender: nil)
         }
     }
 }

@@ -12,6 +12,12 @@ import SwiftyJSON
 import QuartzCore
 import SDWebImage
 
+enum DisplayType
+{
+    case selectMemebers
+    case previewMembers
+}
+
 class MembersViewController: BaseViewController
 {
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +25,10 @@ class MembersViewController: BaseViewController
     
     var dataSource: [Profile] = []
     var notificationToken: NotificationToken?
+    
+    private var currentDisplayType: DisplayType = .previewMembers
+    
+    var members: List<Int> = List()
     
     var selectedProfileIndex = 0
     
@@ -48,6 +58,17 @@ class MembersViewController: BaseViewController
         super.setupUI()
         
         self.activityIndicator.isHidden = true
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(self.savePartyMembers))
+        
+        if self.currentDisplayType == .previewMembers
+        {
+            self.tabBarController?.tabBar.isHidden = false
+        }
+        else
+        {
+            self.tabBarController?.tabBar.isHidden = true
+        }
     }
     
     override func loadData()
@@ -81,6 +102,33 @@ class MembersViewController: BaseViewController
         self.tableView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "membersToProfile",
+            let profileVC = segue.destination as? ProfileViewController
+        {
+            weak var _self = self
+            profileVC.profile = _self?.dataSource[(_self?.selectedProfileIndex)!]
+        }
+    }
+    
+    //MARK: Public methods
+    func setDisplayType(to type: DisplayType)
+    {
+        self.currentDisplayType = type
+    }
+    
+    //MARK: Private methods
+    @objc private func savePartyMembers()
+    {
+        if let createPartyVC = self.navigationController?.viewControllers[1] as? CreatePartyViewController
+        {
+            createPartyVC.members = self.members
+            createPartyVC.newMembersAdded()
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     private func getProfiles()
     {
         self.activityIndicator.isHidden = false
@@ -110,16 +158,6 @@ class MembersViewController: BaseViewController
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.identifier == "membersToProfile",
-            let profileVC = segue.destination as? ProfileViewController
-        {
-            weak var _self = self
-            profileVC.profile = _self?.dataSource[(_self?.selectedProfileIndex)!]
-        }
-    }
-    
     deinit {
         print("deinit called in MembersVC")
         self.notificationToken?.invalidate()
@@ -145,19 +183,55 @@ extension MembersViewController: UITableViewDataSource
         let profile = self.dataSource[indexPath.row]
         cell.configureCell(with: profile)
         
+        if self.currentDisplayType == .previewMembers
+        {
+            cell.accessoryType = .disclosureIndicator
+        }
+        else if self.currentDisplayType == .selectMemebers
+        {
+            if self.members.contains(self.dataSource[indexPath.row].id.intValue)
+            {
+                cell.accessoryType = .checkmark
+            }
+            else
+            {
+                
+                cell.accessoryType = .none
+            }
+        }
+        
+        
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        self.selectedProfileIndex = indexPath.row
+        let cell = tableView.cellForRow(at: indexPath)
         
-        self.notificationToken?.invalidate()
-        RealmEngine.shared.stopObservingErrors(in: self)
-        
-        self.performSegue(withIdentifier: "membersToProfile", sender: nil)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
+        if self.currentDisplayType == .previewMembers
+        {
+            self.selectedProfileIndex = indexPath.row
+            self.notificationToken?.invalidate()
+            RealmEngine.shared.stopObservingErrors(in: self)
+            
+            self.performSegue(withIdentifier: "membersToProfile", sender: nil)
+        }
+        else if self.currentDisplayType == .selectMemebers
+        {
+            if self.members.contains(self.dataSource[indexPath.row].id.intValue),
+                let index = self.members.index(of: self.dataSource[indexPath.row].id.intValue)
+            {
+                self.members.remove(at: index)
+                cell?.accessoryType = .none
+            }
+            else
+            {
+                self.members.append(self.dataSource[indexPath.row].id.intValue)
+                cell?.accessoryType = .checkmark
+            }
+        }
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat

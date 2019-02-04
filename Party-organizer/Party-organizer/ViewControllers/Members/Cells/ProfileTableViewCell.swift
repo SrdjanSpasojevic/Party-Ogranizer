@@ -37,7 +37,7 @@ class ProfileTableViewCell: UITableViewCell {
             }, completion: nil)
         })
         
-        self.accessoryType = .disclosureIndicator
+        
     }
 
 }

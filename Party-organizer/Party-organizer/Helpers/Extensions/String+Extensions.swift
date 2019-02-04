@@ -17,4 +17,8 @@ extension String
         let result = components.joined(separator: "")
         return result
     }
+    
+    var intValue: Int {
+        return Int(self) ?? 0
+    }
 }

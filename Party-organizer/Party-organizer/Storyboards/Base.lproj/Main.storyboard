@@ -382,6 +382,7 @@
                         <outlet property="partyNameLabel" destination="UVE-Vg-6Mj" id="URm-EE-9hg"/>
                         <outlet property="startDateLabel" destination="7hX-1P-dhG" id="a6X-76-t5Y"/>
                         <outlet property="tableView" destination="hbe-6Y-zF7" id="iwy-I8-Ji7"/>
+                        <segue destination="6mi-rb-Adz" kind="show" identifier="partyToMembers" id="z2s-yW-PXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ut9-gj-to8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,4 +604,7 @@
             <point key="canvasLocation" x="-782" y="-244"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="z2s-yW-PXM"/>
+    </inferredMetricsTieBreakers>
 </document>
