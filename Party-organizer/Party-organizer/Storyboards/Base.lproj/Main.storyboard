@@ -266,14 +266,15 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RcX-qj-C4B">
                                                                 <rect key="frame" x="15" y="0.0" width="345" height="50"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hX-1P-dhG">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start date and Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hX-1P-dhG">
                                                                         <rect key="frame" x="0.0" y="0.0" width="172.5" height="50"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start date and time" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggC-z1-brs">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start date and time" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ggC-z1-brs">
                                                                         <rect key="frame" x="172.5" y="0.0" width="172.5" height="50"/>
+                                                                        <gestureRecognizers/>
                                                                         <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
@@ -290,9 +291,6 @@
                                                             <constraint firstAttribute="bottom" secondItem="RcX-qj-C4B" secondAttribute="bottom" id="SQd-HG-yMy"/>
                                                             <constraint firstAttribute="trailing" secondItem="RcX-qj-C4B" secondAttribute="trailing" constant="15" id="cLH-wg-6Uw"/>
                                                         </constraints>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="4yr-J3-OuM" appends="YES" id="DmU-bC-SKl"/>
-                                                        </connections>
                                                     </view>
                                                 </subviews>
                                             </stackView>
@@ -444,17 +442,12 @@
                         <outlet property="datePickerHolderBottom" destination="2Fc-np-COn" id="ol7-33-P44"/>
                         <outlet property="descriptionTextView" destination="lIq-9v-RtE" id="KUf-wG-CUe"/>
                         <outlet property="partyNameLabel" destination="UVE-Vg-6Mj" id="URm-EE-9hg"/>
-                        <outlet property="startDateLabel" destination="7hX-1P-dhG" id="a6X-76-t5Y"/>
+                        <outlet property="startDateTextField" destination="ggC-z1-brs" id="ZIb-ea-U5L"/>
                         <outlet property="tableView" destination="hbe-6Y-zF7" id="iwy-I8-Ji7"/>
                         <segue destination="6mi-rb-Adz" kind="show" identifier="partyToMembers" id="z2s-yW-PXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ut9-gj-to8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="4yr-J3-OuM">
-                    <connections>
-                        <action selector="openDatePickerAction:" destination="Sw5-kG-VF8" id="RC1-9T-D8V"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1901.5999999999999" y="-636.4317841079461"/>
         </scene>

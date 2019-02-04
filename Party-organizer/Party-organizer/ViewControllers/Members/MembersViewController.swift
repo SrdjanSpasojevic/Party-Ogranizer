@@ -28,7 +28,7 @@ class MembersViewController: BaseViewController
     
     private var currentDisplayType: DisplayType = .previewMembers
     
-    var members: List<Int> = List()
+    var members: List<String> = List()
     
     var selectedProfileIndex = 0
     
@@ -189,7 +189,7 @@ extension MembersViewController: UITableViewDataSource
         }
         else if self.currentDisplayType == .selectMemebers
         {
-            if self.members.contains(self.dataSource[indexPath.row].id.intValue)
+            if self.members.contains(self.dataSource[indexPath.row].id)
             {
                 cell.accessoryType = .checkmark
             }
@@ -219,16 +219,32 @@ extension MembersViewController: UITableViewDataSource
         }
         else if self.currentDisplayType == .selectMemebers
         {
-            if self.members.contains(self.dataSource[indexPath.row].id.intValue),
-                let index = self.members.index(of: self.dataSource[indexPath.row].id.intValue)
+            if self.members.contains(self.dataSource[indexPath.row].id),
+                let index = self.members.index(of: self.dataSource[indexPath.row].id)
             {
-                self.members.remove(at: index)
-                cell?.accessoryType = .none
+                self.members.remove(at: index, completion:  { (done, error) in
+                    
+                    if done
+                    {
+                        cell?.accessoryType = .none
+                    }
+                    
+                    print(error ?? "No errors")
+                })
+                
             }
             else
             {
-                self.members.append(self.dataSource[indexPath.row].id.intValue)
-                cell?.accessoryType = .checkmark
+                self.members.append(self.dataSource[indexPath.row].id, completion: { (done, error) in
+                    
+                    if done
+                    {
+                        cell?.accessoryType = .checkmark
+                    }
+                    
+                    print(error ?? "No errors")
+                })
+                
             }
         }
         tableView.deselectRow(at: indexPath, animated: false)

@@ -12,7 +12,7 @@ import RealmSwift
 
 class CreatePartyViewController: BaseViewController
 {
-    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var datePickerHolder: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -24,7 +24,7 @@ class CreatePartyViewController: BaseViewController
     @IBOutlet weak var tableView: UITableView!
     
     var party: Party!
-    var members: List<Int> = List()
+    var members: List<String> = List()
     
     var dataSource: [String] = []
     
@@ -45,13 +45,29 @@ class CreatePartyViewController: BaseViewController
         self.hideDatePicker(animated: false)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(self.saveParty))
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.openDatePicker))
+        tapGesture.numberOfTapsRequired = 1
+        self.startDateTextField.addGestureRecognizer(tapGesture)
+        
+        if self.party != nil
+        {
+            self.partyNameLabel.text = party.name
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "MM.dd.yyyy hh:mm"
+            self.startDateTextField.text = dateFormater.string(from: party.date)
+            self.descriptionTextView.text = party.partyDescription
+            
+            self.members = self.party.members
+            
+            self.newMembersAdded(resetData: true)
+        }
     }
     
     override func loadData()
     {
         super.loadData()
         
-        self.dataSource.append("Members (\(self.dataSource.count))")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -62,13 +78,6 @@ class CreatePartyViewController: BaseViewController
             membersVC.setDisplayType(to: .selectMemebers)
             membersVC.members = self.members
         }
-    }
-    
-    @IBAction func openDatePickerAction(_ sender: UITapGestureRecognizer)
-    {
-        //TODO: Open DatePicker
-        self.resignFirstResponder()
-        self.showDatePicker(animated: true)
     }
     
     @IBAction func cancelAction(_ sender: UIButton)
@@ -82,17 +91,20 @@ class CreatePartyViewController: BaseViewController
     }
     
     //MARK: Public methods
-    func newMembersAdded()
+    func newMembersAdded(resetData: Bool = true)
     {
         let realm = RealmEngine.shared.realm
         var counter = 0
         
-        self.dataSource.removeAll()
-        self.dataSource.append("Members (\(self.dataSource.count-1))")
+        if resetData
+        {
+            self.dataSource.removeAll()
+            self.dataSource.append("Members (\(self.dataSource.count-1))")
+        }
         
         for profileObject in realm.objects(Profile.self)
         {
-            if self.members.contains(profileObject.id.intValue)
+            if self.members.contains(profileObject.id)
             {
                 self.dataSource.append(profileObject.username)
                 counter += 1
@@ -102,17 +114,18 @@ class CreatePartyViewController: BaseViewController
         //+1 because we have "Members (count)" object allways in array
         if counter + 1 == self.dataSource.count
         {
-            self.refreshMembers()
+            self.dataSource[0] = "Members (\(self.dataSource.count-1))"
+            self.tableView.reloadData()
         }
     }
     
-    func refreshMembers()
+    //MARK: Private methods
+    @objc func openDatePicker()
     {
-        self.dataSource[0] = "Members (\(self.dataSource.count-1))"
-        self.tableView.reloadData()
+        self.resignFirstResponder()
+        self.showDatePicker(animated: true)
     }
     
-    //MARK: Private methods
     private func showDatePicker(animated: Bool)
     {
         self.datePickerHolder.isHidden = false
@@ -163,7 +176,7 @@ class CreatePartyViewController: BaseViewController
     {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "MM.dd.yyyy hh:mm"
-        self.startDateLabel.text = dateFormater.string(from: sender.date)
+        self.startDateTextField.text = dateFormater.string(from: sender.date)
         
         self.selectedDate = sender.date
     
@@ -171,9 +184,20 @@ class CreatePartyViewController: BaseViewController
     
     @objc private func saveParty()
     {
-        let party = Party(name: self.partyNameLabel.text ?? "", partyDescription: self.descriptionTextView.text, date: self.selectedDate, members: self.members)
+        if self.party != nil
+        {
+            RealmEngine.shared.update(self.party, with: self.party.toDict())
+        }
+        else
+        {
+            let party = Party(name: self.partyNameLabel.text ?? "", partyDescription: self.descriptionTextView.text, date: self.selectedDate, members: self.members)
+            
+            RealmEngine.shared.add(party)
+        }
         
-        RealmEngine.shared.add(party)
+        
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     deinit {
@@ -192,6 +216,9 @@ extension CreatePartyViewController: UITableViewDataSource
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
         
+        cell.accessoryType = .none
+        cell.backgroundColor = .white
+        
         if indexPath.row == 0
         {
             cell.accessoryType = .disclosureIndicator
@@ -200,6 +227,7 @@ extension CreatePartyViewController: UITableViewDataSource
         {
             cell.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
         }
+        
         
          cell.textLabel?.text = self.dataSource[indexPath.row]
         
@@ -223,8 +251,17 @@ extension CreatePartyViewController: UITableViewDelegate
         
         if indexPath.row != 0
         {
-            self.members.remove(at: indexPath.row-1)
-            self.newMembersAdded()
+            self.members.remove(at: indexPath.row-1) { (done, error) in
+                
+                if done
+                {
+                    self.newMembersAdded()
+                }
+                
+                print(error ?? "No errors")
+                
+            }
+            
             
         }
     }

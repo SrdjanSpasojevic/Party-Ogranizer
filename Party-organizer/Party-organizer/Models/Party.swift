@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftyJSON
 
 
 @objcMembers class Party: Object
@@ -16,9 +17,9 @@ import RealmSwift
     dynamic var name: String!
     dynamic var partyDescription: String? = nil
     dynamic var date: Date!
-    dynamic var members: List<Int>? = nil
+    var members = List<String>()
     
-    convenience init(name: String, partyDescription: String? = "", date: Date, members: List<Int>?)
+    convenience init(name: String, partyDescription: String? = "", date: Date, members: List<String>?)
     {
         self.init()
         
@@ -26,6 +27,19 @@ import RealmSwift
         self.name = name
         self.partyDescription = partyDescription
         self.date = date
-        self.members = members
+        self.members = members ?? List()
+    }
+    
+    func toDict() -> [String : Any]
+    {
+        var toReturn: [String : Any] = [:]
+        
+        toReturn["id"] = self.id
+        toReturn["name"] = self.name
+        toReturn["partyDescription"] = self.partyDescription
+        toReturn["date"] = self.date
+        toReturn["members"] = self.members
+        
+        return toReturn
     }
 }

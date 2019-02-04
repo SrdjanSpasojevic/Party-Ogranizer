@@ -17,6 +17,8 @@ class PartiesViewController: BaseViewController
     var dataSource: [Party] = []
     var notificationToken: NotificationToken?
     
+    var selectedParty: Party?
+    
     var noDataView: NoDataView!
     
     private struct CellIdentifer
@@ -60,10 +62,20 @@ class PartiesViewController: BaseViewController
         
         self.getParties()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "partiesToCreateParty",
+            let createPartyVC = segue.destination as? CreatePartyViewController,
+            let party = self.selectedParty
+        {
+            createPartyVC.party = party
+        }
+    }
 
     @IBAction func addPartyAction(_ sender: UIBarButtonItem)
     {
-        
+        self.performSegue(withIdentifier: "partiesToCreateParty", sender: nil)
     }
     
     private func getParties()
@@ -149,5 +161,11 @@ extension PartiesViewController: UITableViewDelegate
         self.dataSource.remove(at: indexPath.row)
         self.getParties()
 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        self.selectedParty = self.dataSource[indexPath.row]
+        self.performSegue(withIdentifier: "partiesToCreateParty", sender: nil)
     }
 }
