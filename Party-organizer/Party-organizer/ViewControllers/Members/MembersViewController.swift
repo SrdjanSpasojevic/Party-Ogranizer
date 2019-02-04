@@ -247,7 +247,7 @@ extension MembersViewController: UITableViewDataSource
                 
             }
         }
-        tableView.deselectRow(at: indexPath, animated: false)
+        cell?.selectionStyle = .none
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
