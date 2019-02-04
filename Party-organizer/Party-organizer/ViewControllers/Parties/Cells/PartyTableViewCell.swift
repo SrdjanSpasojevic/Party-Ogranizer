@@ -10,14 +10,26 @@ import UIKit
 
 class PartyTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func configureCell(with: Party)
+    func configure(with party: Party)
     {
+        self.titleLabel.text = party.name
         
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "MM.dd.yyyy hh:mm"
+        self.dateLabel.text = dateFormater.string(from: party.date)
+        
+        self.descriptionLabel.text = party.partyDescription
     }
 
 }

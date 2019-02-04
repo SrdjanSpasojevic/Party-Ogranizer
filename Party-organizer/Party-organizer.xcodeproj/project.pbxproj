@@ -27,8 +27,12 @@
 		2A3DE71422087DDD007BF337 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71322087DDD007BF337 /* ProfileViewController.swift */; };
 		2A3DE71622089541007BF337 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71522089541007BF337 /* String+Extensions.swift */; };
 		2A3DE71822089727007BF337 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71722089727007BF337 /* Party.swift */; };
-		2A3DE71A22089834007BF337 /* PartyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71922089834007BF337 /* PartyTableViewCell.swift */; };
 		2A3DE71D22089A96007BF337 /* CreatePartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71C22089A96007BF337 /* CreatePartyViewController.swift */; };
+		2A3DE7302208D7DB007BF337 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE72A2208D7DA007BF337 /* TPKeyboardAvoidingTableView.m */; };
+		2A3DE7312208D7DB007BF337 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE72D2208D7DB007BF337 /* TPKeyboardAvoidingScrollView.m */; };
+		2A3DE7322208D7DB007BF337 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE72E2208D7DB007BF337 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		2A3DE7332208D7DB007BF337 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE72F2208D7DB007BF337 /* TPKeyboardAvoidingCollectionView.m */; };
+		2AF35C962208E1F4007134A3 /* PartyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF35C952208E1F4007134A3 /* PartyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +57,17 @@
 		2A3DE71322087DDD007BF337 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2A3DE71522089541007BF337 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		2A3DE71722089727007BF337 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
-		2A3DE71922089834007BF337 /* PartyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyTableViewCell.swift; sourceTree = "<group>"; };
 		2A3DE71C22089A96007BF337 /* CreatePartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePartyViewController.swift; sourceTree = "<group>"; };
+		2A3DE7272208D7D9007BF337 /* Party-organizer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Party-organizer-Bridging-Header.h"; sourceTree = "<group>"; };
+		2A3DE7282208D7DA007BF337 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		2A3DE7292208D7DA007BF337 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		2A3DE72A2208D7DA007BF337 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		2A3DE72B2208D7DB007BF337 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		2A3DE72C2208D7DB007BF337 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		2A3DE72D2208D7DB007BF337 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		2A3DE72E2208D7DB007BF337 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		2A3DE72F2208D7DB007BF337 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		2AF35C952208E1F4007134A3 /* PartyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyTableViewCell.swift; sourceTree = "<group>"; };
 		4D864903F8BB1206E12989DF /* Pods-Party-organizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.debug.xcconfig"; sourceTree = "<group>"; };
 		D2B71883277B8DFCAE7E69C2 /* Pods_Party_organizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Party_organizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A0C7092D6E66E643D0D755 /* Pods-Party-organizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +175,7 @@
 		2A3265122205CB2E00D863BD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2A3DE7262208D7C1007BF337 /* TPKeyboardAvoiding */,
 				2A32651A2207483100D863BD /* Extensions */,
 				2A32651B2207484B00D863BD /* AlertHelper.swift */,
 			);
@@ -227,7 +241,7 @@
 		2A3DE71B2208986B007BF337 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				2A3DE71922089834007BF337 /* PartyTableViewCell.swift */,
+				2AF35C952208E1F4007134A3 /* PartyTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -237,6 +251,22 @@
 			children = (
 			);
 			path = DatePickerView;
+			sourceTree = "<group>";
+		};
+		2A3DE7262208D7C1007BF337 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				2A3DE7292208D7DA007BF337 /* TPKeyboardAvoidingCollectionView.h */,
+				2A3DE72F2208D7DB007BF337 /* TPKeyboardAvoidingCollectionView.m */,
+				2A3DE7282208D7DA007BF337 /* TPKeyboardAvoidingScrollView.h */,
+				2A3DE72D2208D7DB007BF337 /* TPKeyboardAvoidingScrollView.m */,
+				2A3DE72C2208D7DB007BF337 /* TPKeyboardAvoidingTableView.h */,
+				2A3DE72A2208D7DA007BF337 /* TPKeyboardAvoidingTableView.m */,
+				2A3DE72B2208D7DB007BF337 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				2A3DE72E2208D7DB007BF337 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+				2A3DE7272208D7D9007BF337 /* Party-organizer-Bridging-Header.h */,
+			);
+			path = TPKeyboardAvoiding;
 			sourceTree = "<group>";
 		};
 		69018AEEC9EC01AD94561474 /* Pods */ = {
@@ -282,6 +312,7 @@
 				TargetAttributes = {
 					2A3264F12205B38700D863BD = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -382,17 +413,21 @@
 				2A326527220752F400D863BD /* UIView+Extension.swift in Sources */,
 				2A3DE71822089727007BF337 /* Party.swift in Sources */,
 				2A3264F62205B38700D863BD /* AppDelegate.swift in Sources */,
+				2A3DE7302208D7DB007BF337 /* TPKeyboardAvoidingTableView.m in Sources */,
+				2AF35C962208E1F4007134A3 /* PartyTableViewCell.swift in Sources */,
 				2A32651F22074DD500D863BD /* MembersViewController.swift in Sources */,
 				2A3265142205CB4C00D863BD /* Number+Extension.swift in Sources */,
 				2A32650F2205B83000D863BD /* Profile.swift in Sources */,
-				2A3DE71A22089834007BF337 /* PartyTableViewCell.swift in Sources */,
 				2A32650B2205B78E00D863BD /* ServerCommunication.swift in Sources */,
+				2A3DE7322208D7DB007BF337 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				2A3265232207522100D863BD /* NoDataView.swift in Sources */,
 				2A32651C2207484B00D863BD /* AlertHelper.swift in Sources */,
 				2A3DE71622089541007BF337 /* String+Extensions.swift in Sources */,
+				2A3DE7332208D7DB007BF337 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				2A3265112205C98300D863BD /* RealmEngine.swift in Sources */,
 				2A3DE712220878B0007BF337 /* ProfileTableViewCell.swift in Sources */,
 				2A3DE71D22089A96007BF337 /* CreatePartyViewController.swift in Sources */,
+				2A3DE7312208D7DB007BF337 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2A3DE71422087DDD007BF337 /* ProfileViewController.swift in Sources */,
 				2A3265192207478A00D863BD /* BaseViewController.swift in Sources */,
 				2A3265162207453F00D863BD /* PartiesViewController.swift in Sources */,
@@ -542,6 +577,7 @@
 			baseConfigurationReference = 4D864903F8BB1206E12989DF /* Pods-Party-organizer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6VF74TXRK;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
@@ -552,6 +588,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.srdjanSpasojevic.Party-organizer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Party-organizer/Helpers/TPKeyboardAvoiding/Party-organizer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -562,6 +600,7 @@
 			baseConfigurationReference = F7A0C7092D6E66E643D0D755 /* Pods-Party-organizer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6VF74TXRK;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
@@ -572,6 +611,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.srdjanSpasojevic.Party-organizer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Party-organizer/Helpers/TPKeyboardAvoiding/Party-organizer-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

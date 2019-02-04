@@ -57,15 +57,26 @@ class PartiesViewController: BaseViewController
     {
         super.loadData()
         
+        
+        self.getParties()
+    }
+
+    @IBAction func addPartyAction(_ sender: UIBarButtonItem)
+    {
+        
+    }
+    
+    private func getParties()
+    {
         let realm = RealmEngine.shared.realm
         
-        if dataSource.count == 0
+        self.dataSource.removeAll()
+        
+        for profileObject in realm.objects(Party.self)
         {
-            for profileObject in realm.objects(Party.self)
-            {
-                self.dataSource.append(profileObject)
-            }
+            self.dataSource.append(profileObject)
         }
+        
         
         self.notificationToken = realm.observe({ [weak self] (notification, realm) in
             self?.tableView.reloadData()
@@ -78,12 +89,6 @@ class PartiesViewController: BaseViewController
         self.tableView.reloadData()
         
         self.noDataView.isHidden = self.dataSource.count > 0 ? true : false
-        
-    }
-
-    @IBAction func addPartyAction(_ sender: UIBarButtonItem)
-    {
-        
     }
     
     deinit {
@@ -111,16 +116,38 @@ extension PartiesViewController: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifer.partyCell, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifer.partyCell, for: indexPath) as? PartyTableViewCell else
+        {
+            return UITableViewCell()
+        }
         cell.accessoryType = .disclosureIndicator
         
+        let party = self.dataSource[indexPath.row]
         
+        cell.configure(with: party)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 80
+        return 120.0
+    }
+}
+
+extension PartiesViewController: UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    {
+        guard editingStyle == .delete else
+        {
+            return
+        }
+        
+        let party = self.dataSource[indexPath.row]
+        RealmEngine.shared.delete(party)
+        self.dataSource.remove(at: indexPath.row)
+        self.getParties()
+
     }
 }

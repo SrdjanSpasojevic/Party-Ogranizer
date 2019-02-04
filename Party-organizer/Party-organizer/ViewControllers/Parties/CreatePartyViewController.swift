@@ -41,7 +41,7 @@ class CreatePartyViewController: BaseViewController
     {
         super.setupUI()
         
-        self.datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .editingDidBegin)
+        self.datePicker.addTarget(self, action: #selector(self.dateChanged(_:)), for: .valueChanged)
         self.hideDatePicker(animated: false)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(self.saveParty))
@@ -67,6 +67,7 @@ class CreatePartyViewController: BaseViewController
     @IBAction func openDatePickerAction(_ sender: UITapGestureRecognizer)
     {
         //TODO: Open DatePicker
+        self.resignFirstResponder()
         self.showDatePicker(animated: true)
     }
     
@@ -161,7 +162,7 @@ class CreatePartyViewController: BaseViewController
     @objc private func dateChanged(_ sender: UIDatePicker)
     {
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "mm.dd.yyyy hh:mm"
+        dateFormater.dateFormat = "MM.dd.yyyy hh:mm"
         self.startDateLabel.text = dateFormater.string(from: sender.date)
         
         self.selectedDate = sender.date
@@ -170,7 +171,6 @@ class CreatePartyViewController: BaseViewController
     
     @objc private func saveParty()
     {
-        self.members = List()
         let party = Party(name: self.partyNameLabel.text ?? "", partyDescription: self.descriptionTextView.text, date: self.selectedDate, members: self.members)
         
         RealmEngine.shared.add(party)
@@ -223,7 +223,9 @@ extension CreatePartyViewController: UITableViewDelegate
         
         if indexPath.row != 0
         {
-            self.members.remove(at: indexPath.row)
+            self.members.remove(at: indexPath.row-1)
+            self.newMembersAdded()
+            
         }
     }
     
@@ -233,5 +235,7 @@ extension CreatePartyViewController: UITableViewDelegate
         {
             self.performSegue(withIdentifier: "partyToMembers", sender: nil)
         }
+        
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }
