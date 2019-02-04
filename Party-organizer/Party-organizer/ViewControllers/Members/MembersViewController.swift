@@ -155,7 +155,7 @@ extension MembersViewController: UITableViewDataSource
         self.notificationToken?.invalidate()
         RealmEngine.shared.stopObservingErrors(in: self)
         
-        self.performSegue(withIdentifier: "membersToProfile", sender: self)
+        self.performSegue(withIdentifier: "membersToProfile", sender: nil)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }

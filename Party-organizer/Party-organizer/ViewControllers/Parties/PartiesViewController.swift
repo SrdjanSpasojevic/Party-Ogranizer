@@ -30,6 +30,17 @@ class PartiesViewController: BaseViewController
         
     }
     
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func setupUI()
     {
         super.setupUI()
@@ -37,6 +48,7 @@ class PartiesViewController: BaseViewController
         self.noDataView = NoDataView()
         self.noDataView.setTitle(title: "You have no party.\nCreate some")
         self.noDataView.setActionButtonTitle(title: "Create party")
+        self.noDataView.delegate = self
         
         self.tableView.backgroundView = self.noDataView
     }
@@ -86,6 +98,7 @@ extension PartiesViewController: NoDataViewDelegate
     func actionButtonClicked(_ sender: UIButton)
     {
         //TODO: Create party action
+        self.performSegue(withIdentifier: "partiesToCreateParty", sender: nil)
     }
 }
 

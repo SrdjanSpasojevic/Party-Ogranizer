@@ -9,6 +9,7 @@ target 'Party-organizer' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 4.7'
   pod 'RealmSwift'
+  pod 'PureLayout'
 
 
 end

@@ -28,6 +28,7 @@
 		2A3DE71622089541007BF337 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71522089541007BF337 /* String+Extensions.swift */; };
 		2A3DE71822089727007BF337 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71722089727007BF337 /* Party.swift */; };
 		2A3DE71A22089834007BF337 /* PartyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71922089834007BF337 /* PartyTableViewCell.swift */; };
+		2A3DE71D22089A96007BF337 /* CreatePartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71C22089A96007BF337 /* CreatePartyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		2A3DE71522089541007BF337 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		2A3DE71722089727007BF337 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 		2A3DE71922089834007BF337 /* PartyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyTableViewCell.swift; sourceTree = "<group>"; };
+		2A3DE71C22089A96007BF337 /* CreatePartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePartyViewController.swift; sourceTree = "<group>"; };
 		4D864903F8BB1206E12989DF /* Pods-Party-organizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.debug.xcconfig"; sourceTree = "<group>"; };
 		D2B71883277B8DFCAE7E69C2 /* Pods_Party_organizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Party_organizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A0C7092D6E66E643D0D755 /* Pods-Party-organizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				2A3DE71B2208986B007BF337 /* Cells */,
 				2A3265152207453F00D863BD /* PartiesViewController.swift */,
+				2A3DE71C22089A96007BF337 /* CreatePartyViewController.swift */,
 			);
 			path = Parties;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 		2A326520220751EE00D863BD /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				2A3DE71E22089FE7007BF337 /* DatePickerView */,
 				2A326521220751F400D863BD /* NoDataView */,
 			);
 			path = CustomViews;
@@ -226,6 +230,13 @@
 				2A3DE71922089834007BF337 /* PartyTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		2A3DE71E22089FE7007BF337 /* DatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DatePickerView;
 			sourceTree = "<group>";
 		};
 		69018AEEC9EC01AD94561474 /* Pods */ = {
@@ -317,6 +328,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -327,6 +339,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -379,6 +392,7 @@
 				2A3DE71622089541007BF337 /* String+Extensions.swift in Sources */,
 				2A3265112205C98300D863BD /* RealmEngine.swift in Sources */,
 				2A3DE712220878B0007BF337 /* ProfileTableViewCell.swift in Sources */,
+				2A3DE71D22089A96007BF337 /* CreatePartyViewController.swift in Sources */,
 				2A3DE71422087DDD007BF337 /* ProfileViewController.swift in Sources */,
 				2A3265192207478A00D863BD /* BaseViewController.swift in Sources */,
 				2A3265162207453F00D863BD /* PartiesViewController.swift in Sources */,

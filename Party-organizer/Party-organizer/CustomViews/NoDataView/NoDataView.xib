@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywx-MT-a3f">
-                    <rect key="frame" x="63" y="114" width="251" height="146"/>
+                    <rect key="frame" x="63" y="94" width="251" height="146"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="146" id="8ta-5L-gVF"/>
                         <constraint firstAttribute="width" constant="251" id="Cp9-BZ-rSG"/>
@@ -33,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASy-t4-gwD">
-                    <rect key="frame" x="30" y="310" width="315" height="50"/>
+                    <rect key="frame" x="30" y="290" width="315" height="50"/>
                     <color key="backgroundColor" red="0.015899226069450378" green="0.47211408615112305" blue="0.97516018152236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="zSi-2L-nJ8"/>
@@ -49,13 +49,13 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ASy-t4-gwD" firstAttribute="top" secondItem="Ywx-MT-a3f" secondAttribute="bottom" constant="50" id="Rdh-Oq-J5r"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ASy-t4-gwD" secondAttribute="trailing" constant="30" id="l7y-if-VRz"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ywx-MT-a3f" secondAttribute="trailing" constant="61" id="oN6-PH-hQB"/>
-                <constraint firstItem="Ywx-MT-a3f" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="63" id="r4d-FA-hyw"/>
-                <constraint firstItem="ASy-t4-gwD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="vVG-9a-V3i"/>
-                <constraint firstItem="Ywx-MT-a3f" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="94" id="ysO-HL-0rX"/>
+                <constraint firstAttribute="trailing" secondItem="ASy-t4-gwD" secondAttribute="trailing" constant="30" id="l7y-if-VRz"/>
+                <constraint firstAttribute="trailing" secondItem="Ywx-MT-a3f" secondAttribute="trailing" constant="61" id="oN6-PH-hQB"/>
+                <constraint firstItem="Ywx-MT-a3f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="63" id="r4d-FA-hyw"/>
+                <constraint firstItem="ASy-t4-gwD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="vVG-9a-V3i"/>
+                <constraint firstItem="Ywx-MT-a3f" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="94" id="ysO-HL-0rX"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="RMY-v2-Noz"/>
             <point key="canvasLocation" x="42.399999999999999" y="53.523238380809602"/>
         </view>
     </objects>
