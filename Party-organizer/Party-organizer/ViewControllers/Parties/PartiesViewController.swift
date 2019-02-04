@@ -14,6 +14,9 @@ class PartiesViewController: BaseViewController
 {    
     @IBOutlet weak var tableView: UITableView!
     
+    var dataSource: [Party] = []
+    var notificationToken: NotificationToken?
+    
     var noDataView: NoDataView!
     
     private struct CellIdentifer
@@ -24,7 +27,6 @@ class PartiesViewController: BaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         
     }
     
@@ -43,12 +45,39 @@ class PartiesViewController: BaseViewController
     {
         super.loadData()
         
+        let realm = RealmEngine.shared.realm
+        
+        if dataSource.count == 0
+        {
+            for profileObject in realm.objects(Party.self)
+            {
+                self.dataSource.append(profileObject)
+            }
+        }
+        
+        self.notificationToken = realm.observe({ [weak self] (notification, realm) in
+            self?.tableView.reloadData()
+        })
+        
+        RealmEngine.shared.observeRealmErrors(in: self) { (error) in
+            print(error ?? "No erros")
+        }
+        
+        self.tableView.reloadData()
+        
+        self.noDataView.isHidden = self.dataSource.count > 0 ? true : false
         
     }
 
     @IBAction func addPartyAction(_ sender: UIBarButtonItem)
     {
         
+    }
+    
+    deinit {
+        print("deinit called on PartiesVC")
+        self.notificationToken?.invalidate()
+        RealmEngine.shared.stopObservingErrors(in: self)
     }
 }
 
@@ -64,12 +93,14 @@ extension PartiesViewController: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 0
+        return self.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifer.partyCell, for: indexPath)
+        cell.accessoryType = .disclosureIndicator
+        
         
         
         return cell

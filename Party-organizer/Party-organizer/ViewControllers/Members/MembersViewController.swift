@@ -121,8 +121,9 @@ class MembersViewController: BaseViewController
     }
     
     deinit {
-        print("deinit called")
-        
+        print("deinit called in MembersVC")
+        self.notificationToken?.invalidate()
+        RealmEngine.shared.stopObservingErrors(in: self)
     }
 
 }

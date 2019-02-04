@@ -26,6 +26,8 @@
 		2A3DE712220878B0007BF337 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE711220878B0007BF337 /* ProfileTableViewCell.swift */; };
 		2A3DE71422087DDD007BF337 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71322087DDD007BF337 /* ProfileViewController.swift */; };
 		2A3DE71622089541007BF337 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71522089541007BF337 /* String+Extensions.swift */; };
+		2A3DE71822089727007BF337 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71722089727007BF337 /* Party.swift */; };
+		2A3DE71A22089834007BF337 /* PartyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71922089834007BF337 /* PartyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		2A3DE711220878B0007BF337 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		2A3DE71322087DDD007BF337 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2A3DE71522089541007BF337 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		2A3DE71722089727007BF337 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
+		2A3DE71922089834007BF337 /* PartyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyTableViewCell.swift; sourceTree = "<group>"; };
 		4D864903F8BB1206E12989DF /* Pods-Party-organizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.debug.xcconfig"; sourceTree = "<group>"; };
 		D2B71883277B8DFCAE7E69C2 /* Pods_Party_organizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Party_organizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A0C7092D6E66E643D0D755 /* Pods-Party-organizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				2A32650E2205B83000D863BD /* Profile.swift */,
+				2A3DE71722089727007BF337 /* Party.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 		2A3265172207477800D863BD /* Parties */ = {
 			isa = PBXGroup;
 			children = (
+				2A3DE71B2208986B007BF337 /* Cells */,
 				2A3265152207453F00D863BD /* PartiesViewController.swift */,
 			);
 			path = Parties;
@@ -210,6 +216,14 @@
 			isa = PBXGroup;
 			children = (
 				2A3DE711220878B0007BF337 /* ProfileTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2A3DE71B2208986B007BF337 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2A3DE71922089834007BF337 /* PartyTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -353,10 +367,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A326527220752F400D863BD /* UIView+Extension.swift in Sources */,
+				2A3DE71822089727007BF337 /* Party.swift in Sources */,
 				2A3264F62205B38700D863BD /* AppDelegate.swift in Sources */,
 				2A32651F22074DD500D863BD /* MembersViewController.swift in Sources */,
 				2A3265142205CB4C00D863BD /* Number+Extension.swift in Sources */,
 				2A32650F2205B83000D863BD /* Profile.swift in Sources */,
+				2A3DE71A22089834007BF337 /* PartyTableViewCell.swift in Sources */,
 				2A32650B2205B78E00D863BD /* ServerCommunication.swift in Sources */,
 				2A3265232207522100D863BD /* NoDataView.swift in Sources */,
 				2A32651C2207484B00D863BD /* AlertHelper.swift in Sources */,
