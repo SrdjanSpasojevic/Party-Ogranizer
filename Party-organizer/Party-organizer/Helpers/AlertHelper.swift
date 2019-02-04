@@ -10,7 +10,7 @@ import UIKit
 
 class AlertHelper
 {
-    static public func presentAlert(on vc: UIViewController, message: String, title: String = "")
+    static public func presentAlert(on vc: UIViewController?, message: String, title: String = "")
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -20,6 +20,6 @@ class AlertHelper
         
         alert.addAction(okAction)
         
-        vc.present(alert, animated: true, completion: nil)
+        vc?.present(alert, animated: true, completion: nil)
     }
 }

@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 import SwiftyJSON
+import QuartzCore
+import SDWebImage
 
 class MembersViewController: BaseViewController
 {
@@ -17,6 +19,8 @@ class MembersViewController: BaseViewController
     
     var dataSource: [Profile] = []
     var notificationToken: NotificationToken?
+    
+    var selectedProfileIndex = 0
     
     private struct CellIdentifier
     {
@@ -28,24 +32,35 @@ class MembersViewController: BaseViewController
         super.viewDidLoad()
     }
     
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+    }
+    
     override func setupUI()
     {
         super.setupUI()
+        
+        self.activityIndicator.isHidden = true
     }
     
     override func loadData()
     {
         super.loadData()
         
+        
         let realm = RealmEngine.shared.realm
         
-        for profile in realm.objects(Profile.self)
+        if dataSource.count == 0
         {
-            self.dataSource.append(profile)
+            for profileObject in realm.objects(Profile.self)
+            {
+                self.dataSource.append(profileObject)
+            }
         }
         
-        self.notificationToken = realm.observe({ (notification, realm) in
-            self.tableView.reloadData()
+        self.notificationToken = realm.observe({ [weak self] (notification, realm) in
+            self?.tableView.reloadData()
         })
         
         RealmEngine.shared.observeRealmErrors(in: self) { (error) in
@@ -56,22 +71,25 @@ class MembersViewController: BaseViewController
         {
             self.getProfiles()
         }
+        
+        self.tableView.reloadData()
     }
     
     private func getProfiles()
     {
+        self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
         self.activityIndicator.hidesWhenStopped = true
         
-        ServerCommunication.shared.getProfiles { (profiles, error) in
+        ServerCommunication.shared.getProfiles { [weak self] (profiles, error) in
             
-            self.activityIndicator.stopAnimating()
+            self?.activityIndicator.stopAnimating()
             
             if error == nil,
                 let profiles = profiles
             {
-                self.dataSource = profiles
-                self.tableView.reloadData()
+                self?.dataSource = profiles
+                self?.tableView.reloadData()
                 RealmEngine.shared.add(profiles)
                
                 
@@ -85,31 +103,61 @@ class MembersViewController: BaseViewController
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "membersToProfile",
+            let profileVC = segue.destination as? ProfileViewController
+        {
+            weak var _self = self
+            //profileVC.profile = _self?.dataSource[(_self?.selectedProfileIndex)!]
+        }
+    }
+    
+    deinit {
+        print("deinit called")
+        
+    }
 
 }
 
 extension MembersViewController: UITableViewDataSource
 {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return self.dataSource.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.profileCell, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.profileCell, for: indexPath) as? ProfileTableViewCell else
+        {
+            return UITableViewCell()
+        }
         
         let profile = self.dataSource[indexPath.row]
-        
-        cell.textLabel?.text = profile.username
+        cell.configureCell(with: profile)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        return self.dataSource.count
+        self.selectedProfileIndex = indexPath.row
+        
+        self.notificationToken?.invalidate()
+        RealmEngine.shared.stopObservingErrors(in: self)
+        
+        self.performSegue(withIdentifier: "membersToProfile", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 80
     }
+    
 }
 
 extension MembersViewController: UITableViewDelegate

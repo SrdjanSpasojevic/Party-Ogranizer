@@ -33,10 +33,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASy-t4-gwD">
-                    <rect key="frame" x="62.5" y="310" width="250" height="50"/>
+                    <rect key="frame" x="30" y="310" width="315" height="50"/>
                     <color key="backgroundColor" red="0.015899226069450378" green="0.47211408615112305" blue="0.97516018152236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="250" id="RZo-u2-LRu"/>
                         <constraint firstAttribute="height" constant="50" id="zSi-2L-nJ8"/>
                     </constraints>
                     <state key="normal" title="Create some!">
@@ -49,10 +48,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ASy-t4-gwD" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="O2R-vX-S61"/>
                 <constraint firstItem="ASy-t4-gwD" firstAttribute="top" secondItem="Ywx-MT-a3f" secondAttribute="bottom" constant="50" id="Rdh-Oq-J5r"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ASy-t4-gwD" secondAttribute="trailing" constant="30" id="l7y-if-VRz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ywx-MT-a3f" secondAttribute="trailing" constant="61" id="oN6-PH-hQB"/>
                 <constraint firstItem="Ywx-MT-a3f" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="63" id="r4d-FA-hyw"/>
+                <constraint firstItem="ASy-t4-gwD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="vVG-9a-V3i"/>
                 <constraint firstItem="Ywx-MT-a3f" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="94" id="ysO-HL-0rX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

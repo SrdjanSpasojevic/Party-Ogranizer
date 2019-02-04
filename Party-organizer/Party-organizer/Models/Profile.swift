@@ -12,13 +12,13 @@ import SwiftyJSON
 
 @objcMembers class Profile: Object
 {
-    var id: String!
-    var username: String!
-    var cellPhone: String!
-    var photoURL: String!
-    var email: String!
-    var gender: String!
-    var aboutMe: String!
+    dynamic var id: String!
+    dynamic var username: String!
+    dynamic var cellPhone: String!
+    dynamic var photoURL: String!
+    dynamic var email: String!
+    dynamic var gender: String!
+    dynamic var aboutMe: String!
     
     convenience init(dict: JSON)
     {
@@ -29,5 +29,6 @@ import SwiftyJSON
         self.photoURL = dict["photo"].stringValue
         self.gender = dict["gender"].stringValue
         self.aboutMe = dict["aboutMe"].stringValue
+        self.email = dict["email"].stringValue
     }
 }

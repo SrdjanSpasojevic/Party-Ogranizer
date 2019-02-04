@@ -84,7 +84,8 @@ class RealmEngine: NSObject
         }
     }
     
-    func stopObservingErrors(in vc: UIViewController) {
-        NotificationCenter.default.removeObserver(vc, name: NSNotification.Name("RealmError"), object: nil)
+    func stopObservingErrors(in vc: UIViewController?)
+    {
+        NotificationCenter.default.removeObserver(vc!, name: NSNotification.Name("RealmError"), object: nil)
     }
 }

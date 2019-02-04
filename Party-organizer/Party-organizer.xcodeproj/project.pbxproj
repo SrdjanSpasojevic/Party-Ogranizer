@@ -23,6 +23,8 @@
 		2A3265232207522100D863BD /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3265222207522100D863BD /* NoDataView.swift */; };
 		2A3265252207522B00D863BD /* NoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3265242207522B00D863BD /* NoDataView.xib */; };
 		2A326527220752F400D863BD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A326526220752F400D863BD /* UIView+Extension.swift */; };
+		2A3DE712220878B0007BF337 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE711220878B0007BF337 /* ProfileTableViewCell.swift */; };
+		2A3DE71422087DDD007BF337 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71322087DDD007BF337 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		2A3265222207522100D863BD /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		2A3265242207522B00D863BD /* NoDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoDataView.xib; sourceTree = "<group>"; };
 		2A326526220752F400D863BD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		2A3DE711220878B0007BF337 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		2A3DE71322087DDD007BF337 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		4D864903F8BB1206E12989DF /* Pods-Party-organizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.debug.xcconfig"; sourceTree = "<group>"; };
 		D2B71883277B8DFCAE7E69C2 /* Pods_Party_organizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Party_organizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A0C7092D6E66E643D0D755 /* Pods-Party-organizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,7 +179,9 @@
 		2A32651D22074D9D00D863BD /* Members */ = {
 			isa = PBXGroup;
 			children = (
+				2A3DE71022087835007BF337 /* Cells */,
 				2A32651E22074DD500D863BD /* MembersViewController.swift */,
+				2A3DE71322087DDD007BF337 /* ProfileViewController.swift */,
 			);
 			path = Members;
 			sourceTree = "<group>";
@@ -195,6 +201,14 @@
 				2A3265242207522B00D863BD /* NoDataView.xib */,
 			);
 			path = NoDataView;
+			sourceTree = "<group>";
+		};
+		2A3DE71022087835007BF337 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2A3DE711220878B0007BF337 /* ProfileTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		69018AEEC9EC01AD94561474 /* Pods */ = {
@@ -344,6 +358,8 @@
 				2A3265232207522100D863BD /* NoDataView.swift in Sources */,
 				2A32651C2207484B00D863BD /* AlertHelper.swift in Sources */,
 				2A3265112205C98300D863BD /* RealmEngine.swift in Sources */,
+				2A3DE712220878B0007BF337 /* ProfileTableViewCell.swift in Sources */,
+				2A3DE71422087DDD007BF337 /* ProfileViewController.swift in Sources */,
 				2A3265192207478A00D863BD /* BaseViewController.swift in Sources */,
 				2A3265162207453F00D863BD /* PartiesViewController.swift in Sources */,
 			);

@@ -72,7 +72,6 @@ extension PartiesViewController: UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifer.partyCell, for: indexPath)
         
         
-        
         return cell
     }
     
