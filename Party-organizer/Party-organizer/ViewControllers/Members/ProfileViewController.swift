@@ -31,14 +31,15 @@ class ProfileViewController: BaseViewController
     {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationItem.rightBarButtonItem?.customView?.alpha = 1.0
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Call", style: .plain, target: self, action: #selector(self.callAction))
+        
     }
     
     override func viewWillDisappear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationItem.rightBarButtonItem?.customView?.alpha = 0.0
+        //self.navigationController?.navigationItem.rightBarButtonItem = nil
     }
     
     override func setupUI()
@@ -46,6 +47,8 @@ class ProfileViewController: BaseViewController
         super.setupUI()
         
         self.addToButton.roundCorners(cornerRadius: 10.0)
+        self.addToButton.setTitle("Add to party", for: .normal)
+        
         self.profileImageView.roundCorners(cornerRadius: self.profileImageView.frame.size.height/2)
         let imageURL = URL(string: profile.photoURL)
         self.profileImageView?.sd_setImage(with: imageURL, completed: { (image, error, cache, url) in
@@ -70,18 +73,21 @@ class ProfileViewController: BaseViewController
         
     }
     
-    @IBAction func callButtonAction(_ sender: UIBarButtonItem)
+    //MARK: Private methods
+    @objc func callAction()
     {
-        guard let number = URL(string: "tel://" + self.profile.cellPhone) else
+        guard let number = URL(string: "tel://\(self.profile.cellPhone.removeCharacters(characters: "\" \"()-"))") else
         {
             return
         }
+        
+        
         
         UIApplication.shared.open(number)
     }
     
     deinit {
-        print("Deinit celled on profile")
+        print("Deinit celled on profileVC")
     }
     
 }

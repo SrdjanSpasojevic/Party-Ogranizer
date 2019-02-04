@@ -25,6 +25,7 @@
 		2A326527220752F400D863BD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A326526220752F400D863BD /* UIView+Extension.swift */; };
 		2A3DE712220878B0007BF337 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE711220878B0007BF337 /* ProfileTableViewCell.swift */; };
 		2A3DE71422087DDD007BF337 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71322087DDD007BF337 /* ProfileViewController.swift */; };
+		2A3DE71622089541007BF337 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3DE71522089541007BF337 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		2A326526220752F400D863BD /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		2A3DE711220878B0007BF337 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		2A3DE71322087DDD007BF337 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2A3DE71522089541007BF337 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4D864903F8BB1206E12989DF /* Pods-Party-organizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.debug.xcconfig"; sourceTree = "<group>"; };
 		D2B71883277B8DFCAE7E69C2 /* Pods_Party_organizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Party_organizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A0C7092D6E66E643D0D755 /* Pods-Party-organizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Party-organizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Party-organizer/Pods-Party-organizer.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				2A3265132205CB4C00D863BD /* Number+Extension.swift */,
 				2A326526220752F400D863BD /* UIView+Extension.swift */,
+				2A3DE71522089541007BF337 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				2A32650B2205B78E00D863BD /* ServerCommunication.swift in Sources */,
 				2A3265232207522100D863BD /* NoDataView.swift in Sources */,
 				2A32651C2207484B00D863BD /* AlertHelper.swift in Sources */,
+				2A3DE71622089541007BF337 /* String+Extensions.swift in Sources */,
 				2A3265112205C98300D863BD /* RealmEngine.swift in Sources */,
 				2A3DE712220878B0007BF337 /* ProfileTableViewCell.swift in Sources */,
 				2A3DE71422087DDD007BF337 /* ProfileViewController.swift in Sources */,

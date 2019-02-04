@@ -95,13 +95,7 @@
                         <viewLayoutGuide key="safeArea" id="bDx-sC-FOi"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Members" id="1QL-BF-9kD"/>
-                    <navigationItem key="navigationItem" title="Members" id="NaM-Wo-h2Q">
-                        <barButtonItem key="rightBarButtonItem" title="Call" id="sXj-SK-gr9">
-                            <connections>
-                                <action selector="callButtonAction:" destination="5A1-Xn-7T6" id="egy-QW-7pw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Members" id="NaM-Wo-h2Q"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Qam-zz-Qjq" id="ZrF-Px-PTi"/>
                         <outlet property="tableView" destination="j9V-z7-7cS" id="4Te-MI-0TK"/>
@@ -109,7 +103,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVR-jL-RyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="5A1-Xn-7T6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1073" y="72"/>
         </scene>

@@ -35,6 +35,12 @@ class MembersViewController: BaseViewController
     override func viewWillDisappear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func setupUI()
